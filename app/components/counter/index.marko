@@ -1,0 +1,19 @@
+class {
+  onCreate() {
+    this.state = { count: 0 };
+  }
+
+  decrement() {
+    this.state.count -= 1;
+  }
+
+  increment() {
+    this.state.count += 1;
+  }
+}
+
+<div style="text-align: center; margin: 16px;">
+  <button on-click('decrement')>-</button>
+  <span style="margin: 0 8px;">${state.count}</span>
+  <button on-click('increment')>+</button>
+</div>
