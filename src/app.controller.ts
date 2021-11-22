@@ -1,16 +1,18 @@
 import { Controller, Get, Req, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Request, Response } from 'express';
-import { indexPage } from '../dist/app';
+import { TemplateService } from './template.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {
-  }
+  constructor(
+    private readonly appService: AppService,
+    private readonly templateService: TemplateService,
+  ) {}
 
   @Get()
-  getHello(@Req() req: Request, @Res() res: Response): any {
-    console.log(JSON.stringify(req.headers, null, 2));
-    res.marko(indexPage);
+  async getIndex(@Req() req: Request, @Res() res: Response) {
+    const templates = await this.templateService.getTemplates();
+    res.marko(templates.indexPage);
   }
 }
