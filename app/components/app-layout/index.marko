@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <if(out.global.NODE_ENV != 'production')>
+      <script src="https://cdn-tailwindcss.vercel.app/"></script>
+    </if>
     <${input.head}/>
   </head>
   <body>
